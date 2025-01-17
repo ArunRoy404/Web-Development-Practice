@@ -1,0 +1,38 @@
+#div2{
+    color: white;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    height: 230px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(../images/pic2.jpg);
+    border: 5px solid gray;
+    box-shadow: 10px 10px 10px rebeccapurple;
+    
+}
+
+.buttonDiv{
+
+    align-content: center;
+    height: 100px;
+    margin: 10px;
+    background-color: aquamarine;
+}
+
+.button{
+    border: 5px solid red;
+    width: 300px;
+    border-radius: 2px;
+    box-shadow: 3px 3px 3px rebeccapurple;
+    height: 30px;
+    font-weight: bold;
+    font-size: 15px;
+    background-color: rgb(179, 178, 178);
+}
+
+#toInline{
+    margin: 2px;
+    border: 2px solid red;
+    display: inline-block;
+}
+
