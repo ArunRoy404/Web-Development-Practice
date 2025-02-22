@@ -1,0 +1,16 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+header h1{
+    color: blue;
+}
+
+main h1{
+    color: gray;
+}
+
+.blue-bg{
+    background-color: lightblue !important;
+}
