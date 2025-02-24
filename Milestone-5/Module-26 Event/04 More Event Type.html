@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More Event Types</title>
+</head>
+
+<body>
+    <h1>Ecploring More Event Types</h1>
+    <br>
+
+    <section style="border: 2px solid; padding: 20px;">
+        <h2>Mouse Event Types</h3>
+            <h4 id="mouse-title">YO....!!!</h4>
+            <button id="mouse-enter" class="btn">Mouse Enter</button>
+            <button id="mouse-move" class="btn">Mouse Move</button>
+            <br>
+            <br>
+    </section>
+    <br>
+    <br>
+
+    <section style="border: 2px solid; padding: 20px;">
+        <h2>Input Event Types</h2>
+        <ol>
+            <li>focus</li>
+            <li>blur</li>
+            <li>value changing</li>
+        </ol>
+        <br>
+        <h3 id="input-state">See Here The Updates</h3>
+        <h3 id="input-update">See here what is updating</h3>
+        <input type="text" name="" placeholder="type here" id="input-container">
+    </section>
+    <br>
+    <br>
+    <section style="border: 2px solid; padding: 20px;">
+        <h2 id="delete-item">Make an element disable</h2>
+        <input type="text" name="" placeholder="write delete" id="delete-input">
+        <button id="delete-button" disabled >Delete</button>
+    </section>
+
+
+
+
+    <script>
+        const mouseButtons = document.getElementsByClassName('btn')
+        for (btn of mouseButtons) {
+            btn.addEventListener('mouseout',
+                function () {
+                    document.getElementById('mouse-title').innerText = "Mouse Out"
+                })
+        }
+
+        document.getElementById('mouse-enter').addEventListener('mouseenter',
+            function () {
+                document.getElementById('mouse-title').innerText = 'Mouse Entered'
+            })
+
+        document.getElementById('mouse-move').addEventListener('mousemove',
+            function () {
+                document.getElementById('mouse-title').innerText = 'Mouse Moved'
+                console.log('1')
+            })
+
+
+        document.getElementById('input-container').addEventListener('focus',
+            function () {
+                document.getElementById('input-state').innerText = "About to Write or Writing"
+
+            })
+
+        document.getElementById('input-container').addEventListener('blur',
+            function () {
+                const input = document.getElementById('input-container').value
+                document.getElementById('input-state').innerText = "Done Writing"
+                document.getElementById('input-update').innerText = "Typed: " + input
+            })
+
+        // keydown
+        // document.getElementById('input-container').addEventListener('keydown',
+        //     function(event){
+        //         document.getElementById('input-update').innerText = "Typing: "+ event.target.value
+        //         // console.log(event.target)   the target is the input. so we want the value
+        //     })
+
+        // keyup
+        document.getElementById('input-container').addEventListener('keyup',
+            function (event) {
+                document.getElementById('input-update').innerText = "Typing: " + event.target.value
+                // console.log(event.target)   the target is the input. so we want the value
+            })
+
+        // both works
+        // document.getElementById('delete-input').addEventListener('keyup',
+        //     function(event){
+        //         const inputValue = event.target.value
+        //         if(inputValue == "delete"){
+        //             document.getElementById('delete-button').removeAttribute('disabled')
+        //         }else{
+        //             document.getElementById('delete-button').setAttribute('disabled',true)
+        //         }
+        //     })
+        document.getElementById('delete-input').addEventListener('keyup',
+            function(){
+                const inputValue = document.getElementById('delete-input').value
+                if(inputValue == "delete"){
+                    document.getElementById('delete-button').removeAttribute('disabled')
+                }else{
+                    document.getElementById('delete-button').setAttribute('disabled',true)
+                }
+            })
+        document.getElementById('delete-button').addEventListener('click',
+            function(){
+                document.getElementById('delete-item').style.visibility = 'hidden'
+            })
+    </script>
+</body>
+
+</html>

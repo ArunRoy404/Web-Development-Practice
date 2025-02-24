@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Delegate</title>
+</head>
+<body>
+    <h1>Explore Event Delegate</h1>
+    <h2>Event delegate is used to use the parent for using its childs event handler. <br> 
+        using this we dont need to assign event handler to every child nodes
+        <br>
+        because in event bubble the child hanfler will appear in the parent node by back propagaton.
+        <br> 
+        so its better to use event delegate to only use the parent.
+        <br>
+        it helps us from assigning multiple event handler in child and optimize ram 
+    </h2>
+    <br>
+    <br>
+    <h2>Here using event handler in every child and deleting child.
+        <br>
+        but the parent wont be able to remove the newly added child
+        <br>
+        even placing the child event handler code at last wont solve the problem
+    </h2>
+    <ol id="list-container-1">
+        <li class="list-item">List - item 1</li>
+        <li class="list-item">List - item 2</li>
+        <li class="list-item">List - item 3</li>
+        <li class="list-item">List - item 4</li>
+        <li class="list-item">List - item 5</li>
+        <li class="list-item">List - item 6</li>
+    </ol>
+    <input type="text" name="" id="input-text-1"><br>
+    <button id="add-button-1">add</button>
+
+    <br>
+    <br>
+    <h2>Now we will add event handler in parent , and it will get what child got event handler
+    </h2>
+    <input type="text" name="" id="input-text-2"><br>
+    <button id="add-button-2">add</button>
+    <ol id="list-container-2">
+        <li >List - item 1</li>
+        <li >List - item 2</li>
+        <li >List - item 3</li>
+        <li >List - item 4</li>
+        <li >List - item 5</li>
+        <li >List - item 6</li>
+    </ol>
+    
+
+
+
+    <script>
+        const items = document.getElementsByClassName('list-item')
+        for(const item of items){
+            item.addEventListener('click',function(event){
+                const listContainer1 = document.getElementById('list-container-1')
+                listContainer1.removeChild(event.target)
+            })
+        }
+        
+
+        document.getElementById('add-button-1').addEventListener('click',function(){
+            const text = document.getElementById('input-text-1').value
+            console.log(text)
+            const li = document.createElement('li')
+            li.innerText = text
+            li.classList.add('list-item')
+            console.log(li)
+            document.getElementById('list-container-1').appendChild(li)
+
+        })
+
+        // part 2 
+
+        const container2 = document.getElementById('list-container-2')
+        container2.addEventListener('click',function(event){
+            container2.removeChild(event.target)
+        })
+
+        document.getElementById('add-button-2').addEventListener('click',function(){
+            const text = document.getElementById('input-text-2').value
+            console.log(text)
+            const li = document.createElement('li')
+            li.innerText = text
+            console.log(li)
+            document.getElementById('list-container-2').appendChild(li)
+
+        })
+
+        
+    </script>
+</body>
+</html>

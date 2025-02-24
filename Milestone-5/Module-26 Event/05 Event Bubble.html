@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubble</title>
+    <style>
+        #body {
+            border: 2px solid red;
+            padding: 5px;
+        }
+
+        #list-container {
+            border: 2px solid rebeccapurple;
+            padding: 5px;
+        }
+        #order-list{
+            border: 2px solid cyan;
+        }
+        .list-item{
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+
+<body id="body">
+    <h1>Explore event bubble</h1>
+    <section id="list-container">
+        <h2>List of things</h2>
+        <ol id="order-list">
+            <li class="list-item">list-item-1</li>
+            <li class="list-item" id="list-item-2">list-item-2</li>
+            <li class="list-item">list-item-3</li>
+            <li class="list-item">list-item-4</li>
+            <li class="list-item">list-item-5</li>
+        </ol>
+    </section>
+
+    <br>
+    <br>
+    <h1 id="update">see console</h1>
+
+    <script>
+        document.getElementById('list-item-2').addEventListener('click',
+            function(event){
+                console.log("item 2 clicked")
+                // event.stopPropagation()
+                event.stopImmediatePropagation()
+            })
+        document.getElementById('list-item-2').addEventListener('click',
+            function(event){
+                console.log("item 2 clicked twice")
+            })
+        document.getElementById('order-list').addEventListener('click',
+            function(){
+                console.log("order list clicked")
+            })
+        document.getElementById('list-container').addEventListener('click',
+            function(){
+                console.log("list container clicked")
+            })
+        document.getElementById('body').addEventListener('click',
+            function(){
+                console.log("body clicked")
+            })
+    </script>
+</body>
+</html>

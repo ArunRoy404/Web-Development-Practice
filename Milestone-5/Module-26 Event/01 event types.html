@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Event</title>
+</head>
+<body>
+    <h1>Welcome to DOM events</h1>
+    <h3>1. here button for onclick inside tag in html</h3>
+    <button onclick="console.log('from the button 1 tag')" >Button 1</button>
+    <button onclick="console.log('from the button 2 tag')" >Button 2</button>
+    <br>
+    <br>
+    <h1>change body color</h1>
+    <h3>2. here calling the function from button tag inside script tag </h3>
+    <button onclick="bgBlue()">blue</button>
+    <button onclick="bgRed()">red</button> 
+    <br>
+    
+    <h3>3. here calling the function from creating node variable of button</h3>
+    <button id="body-green">green</button>
+    <button id="body-yellow">yellow</button>
+    <br>
+    
+    <h3>4. direct body background change without calling function</h3>
+    <button id="body-cyan">cyan</button>
+    <button id="body-purple">purple</button>
+    <br>
+    
+    <h3>5. addEventListener</h3>
+    <button id="body-gold">gold</button>
+    <button id="body-gray">gray</button>
+    <br>
+
+    <h3>6. External addEventListener</h3>
+    <button id="body-orange">orange</button>
+
+
+    <script>
+        function bgBlue(){
+            document.body.style.backgroundColor = 'blue';
+        }
+
+        function bgRed(){
+            document.body.style.backgroundColor = "red";
+        }
+
+        const greenButton = document.getElementById('body-green')
+        const yellowButton = document.getElementById('body-yellow')
+
+        greenButton.onclick = makeBgGreen; 
+        function makeBgGreen(){
+            document.body.style.backgroundColor = 'green'
+        }
+
+        yellowButton.onclick = makeBgYellow;
+        function makeBgYellow(){
+            document.body.style.backgroundColor = 'yellow'
+        }
+
+
+
+        const cyanButton = document.getElementById('body-cyan')
+        const purpleButton = document.getElementById('body-purple')
+
+        cyanButton.onclick = function(){
+            document.body.style.backgroundColor = 'cyan'
+        }
+        purpleButton.onclick = function(){
+            document.body.style.backgroundColor = 'purple'
+        }
+
+        document.getElementById('body-gold').addEventListener('click',
+        function makeBgGold(){
+            document.body.style.backgroundColor = 'gold'
+        })
+        document.getElementById('body-gray').addEventListener('click',
+        function makeBgGray(){
+            document.body.style.backgroundColor = 'lightGray'
+        })
+    </script>
+    <script src="js/01 event types.js"></script>
+</body>
+</html>
